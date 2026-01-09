@@ -4,6 +4,10 @@ Train a custom CNN and a ResNet18 transfer model on CIFAR-10, compare results, a
 
 ## Project Structure
 
+## Dataset
+
+CIFAR-10: https://www.cs.toronto.edu/~kriz/cifar.html
+
 - `cnn_classifier.py`: training + evaluation
 - `app.py`: Streamlit results dashboard
 - `results.json`: final experiment summary
@@ -11,24 +15,55 @@ Train a custom CNN and a ResNet18 transfer model on CIFAR-10, compare results, a
 - `models/`: saved model weights
 - `data/`: CIFAR-10 dataset (auto-downloaded)
 
+## Key Takeaways
+
+- A custom-designed CNN (3.25M parameters) outperformed a pretrained ResNet18 (11.18M parameters) on CIFAR-10.
+- Demonstrates that task-specific architecture design can outperform larger pretrained models.
+- Highlights tradeoffs between model size, accuracy, and training time.
+
+## Models
+
+### Custom CNN (From Scratch)
+- 3 convolutional blocks with BatchNorm, ReLU, and MaxPooling
+- Dropout-based regularization in the classifier
+- Designed specifically for 32×32 CIFAR-10 images
+- ~3.25M parameters
+
+### ResNet18 (Transfer Learning)
+- Pretrained on ImageNet
+- Final classification layer replaced for CIFAR-10
+- Fine-tuned using Adam optimizer
+- ~11.18M parameters
+
+## Skills Demonstrated
+
+- Convolutional Neural Network (CNN) design
+- Transfer learning with pretrained models
+- GPU-accelerated training using PyTorch
+- Data augmentation and regularization techniques
+- Model evaluation using confusion matrices and classification reports
+- Experiment tracking and result visualization
+
 ## Setup
+
+A virtual environment is recommended to keep dependencies isolated and avoid conflicts. You can also run this on your system Python if you prefer, but you may run into version clashes with other projects.
 
 Create and activate a virtual environment, then install dependencies:
 
 ```powershell
-.env\Scripts\python.exe -m pip install -r requirements.txt
+.env\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
 If you have an NVIDIA GPU, install CUDA-enabled PyTorch:
 
 ```powershell
-.env\Scripts\python.exe -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+.env\Scripts\python.exe -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
 If you do NOT have an NVIDIA GPU (CPU-only):
 
 ```powershell
-.env\Scripts\python.exe -m pip install torch torchvision torchaudio
+.env\Scripts\python.exe -m pip install torch torchvision torchaudio
 ```
 
 ### macOS
@@ -55,7 +90,7 @@ python3 -m pip install torch torchvision torchaudio
 ## Train + Evaluate
 
 ```powershell
-.env\Scripts\python.exe cnn_classifier.py
+.env\Scripts\python.exe cnn_classifier.py
 ```
 
 Outputs:
@@ -66,7 +101,7 @@ Outputs:
 ## Results Dashboard
 
 ```powershell
-.env\Scripts\python.exe -m streamlit run app.py
+.env\Scripts\python.exe -m streamlit run app.py
 ```
 
 Use the sidebar to save `results.json` and refresh assets.
