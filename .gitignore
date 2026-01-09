@@ -1,0 +1,17 @@
+# Virtual environments
+venv/
+.venv/
+
+# Data and large artifacts
+data/
+models/
+*.pth
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
