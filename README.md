@@ -51,19 +51,19 @@ A virtual environment is recommended to keep dependencies isolated and avoid con
 Create and activate a virtual environment, then install dependencies:
 
 ```powershell
-.env\Scripts\python.exe -m pip install -r requirements.txt
+.\venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
 If you have an NVIDIA GPU, install CUDA-enabled PyTorch:
 
 ```powershell
-.env\Scripts\python.exe -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+.\venv\Scripts\python.exe -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
 If you do NOT have an NVIDIA GPU (CPU-only):
 
 ```powershell
-.env\Scripts\python.exe -m pip install torch torchvision torchaudio
+.\venv\Scripts\python.exe -m pip install torch torchvision torchaudio
 ```
 
 ### macOS
@@ -90,7 +90,7 @@ python3 -m pip install torch torchvision torchaudio
 ## Train + Evaluate
 
 ```powershell
-.env\Scripts\python.exe cnn_classifier.py
+.\venv\Scripts\python.exe cnn_classifier.py
 ```
 
 Outputs:
@@ -101,10 +101,10 @@ Outputs:
 ## Results Dashboard
 
 ```powershell
-.env\Scripts\python.exe -m streamlit run app.py
+.\venv\Scripts\python.exe -m streamlit run app.py
 ```
 
-Use the sidebar to save `results.json` and refresh assets.
+Use the sidebar to save `results.json`.
 
 ## Latest Run (Best Scores)
 
@@ -114,6 +114,10 @@ Use the sidebar to save `results.json` and refresh assets.
 - ResNet18 training time: 7.66 minutes
 
 ## Screenshots
+
+### Streamlit Dashboard
+
+![Streamlit Dashboard](assets/streamlit_dashboard.png)
 
 ### Training Curves
 
@@ -130,10 +134,6 @@ Use the sidebar to save `results.json` and refresh assets.
 ### Sample Predictions
 
 ![Sample Predictions](assets/sample_predictions.png)
-
-### Streamlit Dashboard
-
-![Streamlit Dashboard](assets/streamlit_dashboard.png)
 
 ## Author
 
