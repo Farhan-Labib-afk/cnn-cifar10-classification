@@ -44,44 +44,62 @@ CIFAR-10: https://www.cs.toronto.edu/~kriz/cifar.html
 - Model evaluation using confusion matrices and classification reports
 - Experiment tracking and result visualization
 
+## Quick Start
+
+```bash
+git clone https://github.com/<your-username>/cnn-cifar10-classification.git
+cd cnn-cifar10-classification
+python -m venv .venv
+```
+
 ## Setup
 
 A virtual environment is recommended to keep dependencies isolated and avoid conflicts. You can also run this on your system Python if you prefer, but you may run into version clashes with other projects.
 
-Create and activate a virtual environment, then install dependencies:
+### Windows (PowerShell)
 
 ```powershell
-.\venv\Scripts\python.exe -m pip install -r requirements.txt
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
 ```
 
-If you have an NVIDIA GPU, install CUDA-enabled PyTorch:
+NVIDIA GPU (CUDA):
 
 ```powershell
-.\venv\Scripts\python.exe -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+python -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
-If you do NOT have an NVIDIA GPU (CPU-only):
+CPU-only:
 
 ```powershell
-.\venv\Scripts\python.exe -m pip install torch torchvision torchaudio
+python -m pip install torch torchvision torchaudio
 ```
 
 ### macOS
 
-Create and activate a virtual environment:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+python3 -m pip install torch torchvision torchaudio
+```
+
+### Linux
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-```
-
-Install dependencies:
-
-```bash
 python3 -m pip install -r requirements.txt
 ```
 
-Install PyTorch (CPU/MPS build from PyPI):
+NVIDIA GPU (CUDA):
+
+```bash
+python3 -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+```
+
+CPU-only:
 
 ```bash
 python3 -m pip install torch torchvision torchaudio
@@ -89,8 +107,16 @@ python3 -m pip install torch torchvision torchaudio
 
 ## Train + Evaluate
 
+Windows (PowerShell):
+
 ```powershell
 .\venv\Scripts\python.exe cnn_classifier.py
+```
+
+macOS/Linux:
+
+```bash
+python3 cnn_classifier.py
 ```
 
 Outputs:
@@ -100,8 +126,16 @@ Outputs:
 
 ## Results Dashboard
 
+Windows (PowerShell):
+
 ```powershell
 .\venv\Scripts\python.exe -m streamlit run app.py
+```
+
+macOS/Linux:
+
+```bash
+python3 -m streamlit run app.py
 ```
 
 Use the sidebar to save `results.json`.
