@@ -26,6 +26,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 import seaborn as sns
 from tqdm import tqdm
 import time
+from datetime import datetime, timezone
 
 # Set device
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -515,6 +516,30 @@ def main():
     }
     results_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
     print(f"Results saved to {results_path}")
+
+    metrics_path = BASE_DIR / "data" / "training_metrics.json"
+    run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    metrics = {
+        "run_id": run_id,
+        "models": {
+            "custom_cnn": {
+                "train_losses": history_custom["train_losses"],
+                "train_accs": history_custom["train_accs"],
+                "test_accs": history_custom["test_accs"],
+                "best_acc": history_custom["best_acc"],
+                "training_time_min": time_custom / 60.0,
+            },
+            "resnet18_transfer": {
+                "train_losses": history_resnet["train_losses"],
+                "train_accs": history_resnet["train_accs"],
+                "test_accs": history_resnet["test_accs"],
+                "best_acc": history_resnet["best_acc"],
+                "training_time_min": time_resnet / 60.0,
+            },
+        },
+    }
+    metrics_path.write_text(json.dumps(metrics, indent=2), encoding="utf-8")
+    print(f"Training metrics saved to {metrics_path}")
     
     print("\n" + "="*60)
     print("Project completed! All visualizations saved.")

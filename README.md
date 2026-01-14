@@ -10,6 +10,7 @@ CIFAR-10: https://www.cs.toronto.edu/~kriz/cifar.html
 
 - `cnn_classifier.py`: training + evaluation
 - `app.py`: Streamlit results dashboard
+- `etl.py`: ETL export to BI-ready CSV
 - `results.json`: final experiment summary
 - `assets/`: plots and visual outputs
 - `models/`: saved model weights
@@ -42,6 +43,7 @@ CIFAR-10: https://www.cs.toronto.edu/~kriz/cifar.html
 - GPU-accelerated training using PyTorch
 - Data augmentation and regularization techniques
 - Model evaluation using confusion matrices and classification reports
+- ETL for BI-ready experiment metrics
 - Experiment tracking and result visualization
 
 ## Quick Start
@@ -140,14 +142,31 @@ python3 -m streamlit run app.py
 
 Use the sidebar to save `results.json`.
 
+## ETL (BI-ready Export)
+
+Generate a normalized CSV for Power BI/Tableau:
+
+```bash
+python etl.py
+```
+
+Output:
+- `data/bi_metrics.csv`
+    - Includes summary metrics from `results.json`
+    - Includes per-epoch metrics if `data/training_metrics.json` exists
+
 ## Latest Run (Best Scores)
 
-- Custom CNN best accuracy: 86.76%
-- ResNet18 best accuracy: 84.15%
-- Custom CNN training time: 11.94 minutes
-- ResNet18 training time: 7.66 minutes
+- Custom CNN best accuracy: 88.40%
+- ResNet18 best accuracy: 84.39%
+- Custom CNN training time: 12.64 minutes
+- ResNet18 training time: 8.16 minutes
 
 ## Screenshots
+
+### Power BI Dashboard
+
+![Power BI Dashboard](assets/powerbi_dashboard.png)
 
 ### Streamlit Dashboard
 

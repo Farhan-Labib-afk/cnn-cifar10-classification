@@ -1,6 +1,6 @@
 {
-  "custom_best_acc": "86.76%",
-  "custom_time_min": "11.94",
-  "resnet_best_acc": "84.15%",
-  "resnet_time_min": "7.66"
+  "custom_best_acc": "88.40%",
+  "custom_time_min": "12.64",
+  "resnet_best_acc": "84.39%",
+  "resnet_time_min": "8.16"
 }
